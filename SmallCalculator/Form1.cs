@@ -19,6 +19,7 @@ namespace SmallCalculator
         int multyplyTriger = 0;
         int deleteTriger = 0;
         int stupenTriger = 0;
+        int finalTriger = 0;
         string lastAction = "";
 
         public Form1()
@@ -221,38 +222,43 @@ namespace SmallCalculator
         }*/
 
         private void buttonsHandler(string value) {
-            if (label1.Text.Equals("0"))
+            if (textBox1.Text.Equals("0"))
             {
-                label1.Text = value;
+                textBox1.Text = value;
             }
             else if (summTrigger > 0)
             {
-                label1.Text = value;
+                textBox1.Text = value;
                 summTrigger = 0;
             }
             else if (minusTriger > 0)
             {
-                label1.Text = value;
+                textBox1.Text = value;
                 minusTriger = 0;
             }
             else if (multyplyTriger > 0)
             {
-                label1.Text = value;
+                textBox1.Text = value;
                 multyplyTriger = 0;
             }
             else if (deleteTriger > 0)
             {
-                label1.Text = value;
+                textBox1.Text = value;
                 deleteTriger = 0;
             }
             else if (stupenTriger > 0)
             {
-                label1.Text = value;
+                textBox1.Text = value;
                 stupenTriger = 0;
+            }
+            else if (finalTriger > 0)
+            {
+                textBox1.Text = value;
+                finalTriger = 0;
             }
             else
             {
-                label1.Text = label1.Text + value;
+                textBox1.Text = textBox1.Text + value;
             }
         }
 
@@ -310,10 +316,10 @@ namespace SmallCalculator
         {
             if (lastAction.Equals("minus")) 
             { 
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ - sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 minusTriger = 0;
                 summTrigger = 1;
                 multyplyTriger = 0;
@@ -322,10 +328,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("multiply"))
             {
-                double mpl = double.Parse(label1.Text);
+                double mpl = double.Parse(textBox1.Text);
                 summ = summ * mpl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 multyplyTriger = 0;
                 summTrigger = 1;
                 lastAction = "pluss";
@@ -333,10 +339,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("deletion"))
             {
-                double dl = double.Parse(label1.Text);
+                double dl = double.Parse(textBox1.Text);
                 summ = summ / dl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 0;
                 summTrigger = 1;
                 lastAction = "pluss";
@@ -344,19 +350,19 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("stupen"))
             {
-                double stp = double.Parse(label1.Text);
+                double stp = double.Parse(textBox1.Text);
                 summ = Math.Pow(summ, stp);
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 stupenTriger = 0;
                 summTrigger = 1;
                 lastAction = "pluss";
                 return;
             }
-            double number = double.Parse(label1.Text);              
+            double number = double.Parse(textBox1.Text);              
             summ = summ + number;
             Console.WriteLine(summ);
-            label1.Text = summ.ToString();
+            textBox1.Text = summ.ToString();
             summTrigger = 1;
             lastAction = "pluss";
         }
@@ -365,7 +371,7 @@ namespace SmallCalculator
         {
             if (lastAction.Equals("")) 
             {
-                summ=double.Parse(label1.Text);
+                summ=double.Parse(textBox1.Text);
                 minusTriger = 1;
                 Console.WriteLine(summ);
                 lastAction = "minus";
@@ -373,10 +379,11 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("pluss"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ + sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
+                Console.WriteLine(summ.ToString());
                 minusTriger = 1;
                 summTrigger = 0;
                 multyplyTriger = 0;
@@ -385,10 +392,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("multiply"))
             {
-                double mpl = double.Parse(label1.Text);
+                double mpl = double.Parse(textBox1.Text);
                 summ = summ * mpl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 multyplyTriger = 0;
                 minusTriger = 1;
                 lastAction = "minus";
@@ -396,10 +403,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("deletion"))
             {
-                double dl = double.Parse(label1.Text);
+                double dl = double.Parse(textBox1.Text);
                 summ = summ / dl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 0;
                 minusTriger = 1;
                 lastAction = "minus";
@@ -407,19 +414,19 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("stupen"))
             {
-                double stp = double.Parse(label1.Text);
+                double stp = double.Parse(textBox1.Text);
                 summ = Math.Pow(summ, stp);
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 stupenTriger = 0;
                 minusTriger = 1;
                 lastAction = "minus";
                 return;
             }
-            double subtr = double.Parse(label1.Text);
+            double subtr = double.Parse(textBox1.Text);
             summ = summ-subtr;
             Console.WriteLine(summ);
-            label1.Text = summ.ToString();
+            textBox1.Text = summ.ToString();
             minusTriger = 1;
             lastAction = "minus";
         }
@@ -428,16 +435,16 @@ namespace SmallCalculator
         {
             if (lastAction.Equals(""))
             {
-                summ = double.Parse(label1.Text);               
+                summ = double.Parse(textBox1.Text);               
                 multyplyTriger = 1;
                 lastAction = "multiply";
                 return;
             }
             if (lastAction.Equals("pluss"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ + sbtr;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 summTrigger = 0;
                 multyplyTriger = 1;
                 lastAction = "multiply";
@@ -445,9 +452,9 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("minus"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ - sbtr;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 minusTriger = 0;
                 multyplyTriger = 1;
                 lastAction = "multiply";
@@ -455,9 +462,9 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("deletion"))
             {
-                double dl = double.Parse(label1.Text);
+                double dl = double.Parse(textBox1.Text);
                 summ = summ / dl;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 0;
                 multyplyTriger = 1;
                 lastAction = "multiply";
@@ -465,18 +472,18 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("stupen"))
             {
-                double stp = double.Parse(label1.Text);
+                double stp = double.Parse(textBox1.Text);
                 summ = Math.Pow(summ, stp);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 stupenTriger = 0;
                 multyplyTriger = 1;
                 lastAction = "multiply";
                 return;
             }
-            double number = double.Parse(label1.Text);
+            double number = double.Parse(textBox1.Text);
             summ = summ * number;
             Console.WriteLine(summ);
-            label1.Text = summ.ToString();
+            textBox1.Text = summ.ToString();
             multyplyTriger = 1;
             lastAction = "multiply";
         }
@@ -485,16 +492,16 @@ namespace SmallCalculator
         {
             if (lastAction.Equals(""))
             {
-                summ = double.Parse(label1.Text);
+                summ = double.Parse(textBox1.Text);
                 deleteTriger = 1;
                 lastAction = "deletion";
                 return;
             }
             if (lastAction.Equals("pluss"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ + sbtr;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 summTrigger = 0;
                 deleteTriger = 1;
                 lastAction = "deletion";
@@ -502,9 +509,9 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("minus"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ - sbtr;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 minusTriger = 0;
                 deleteTriger = 1;
                 lastAction = "deletion";
@@ -512,9 +519,9 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("multiply"))
             {
-                double mpl = double.Parse(label1.Text);
+                double mpl = double.Parse(textBox1.Text);
                 summ = summ * mpl;
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 multyplyTriger = 0;
                 deleteTriger = 1;
                 lastAction = "deletion";
@@ -522,19 +529,19 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("stupen"))
             {
-                double stp = double.Parse(label1.Text);
+                double stp = double.Parse(textBox1.Text);
                 summ = Math.Pow(summ, stp);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 stupenTriger = 0;
                 deleteTriger = 1;
                 lastAction = "deletion";
                 return;
             }
-            double number = double.Parse(label1.Text);
+            double number = double.Parse(textBox1.Text);
             if (number == 0)
             {
                 lastAction = "";
-                label1.Text = "Wrong value. Press clear to start again";
+                textBox1.Text = "Wrong value. Press clear to start again";
                 summ = 0;
                 return;
             }
@@ -542,7 +549,7 @@ namespace SmallCalculator
             {
                 summ = summ / number;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 1;
                 lastAction = "deletion";
             }
@@ -552,17 +559,17 @@ namespace SmallCalculator
         {
             if (lastAction.Equals(""))
             {
-                summ = double.Parse(label1.Text);
+                summ = double.Parse(textBox1.Text);
                 deleteTriger = 1;
                 lastAction = "stupen";
                 return;
             }
             if (lastAction.Equals("pluss"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ + sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 summTrigger = 0;
                 stupenTriger = 1;
                 lastAction = "stupen";
@@ -570,10 +577,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("minus"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ - sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 minusTriger = 0;
                 stupenTriger = 1;
                 lastAction = "stupen";
@@ -581,10 +588,10 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("multiply"))
             {
-                double mpl = double.Parse(label1.Text);
+                double mpl = double.Parse(textBox1.Text);
                 summ = summ * mpl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 multyplyTriger = 0;
                 stupenTriger = 1;
                 lastAction = "stupen";
@@ -592,19 +599,19 @@ namespace SmallCalculator
             }
             if (lastAction.Equals("deletion"))
             {
-                double dl = double.Parse(label1.Text);
+                double dl = double.Parse(textBox1.Text);
                 summ = summ / dl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 0;
                 stupenTriger = 1;
                 lastAction = "stupen";
                 return;
             }
-            double number = double.Parse(label1.Text);
+            double number = double.Parse(textBox1.Text);
             summ = Math.Pow(summ, number);
             Console.WriteLine(summ);
-            label1.Text = summ.ToString();
+            textBox1.Text = summ.ToString();
             stupenTriger = 1;
             lastAction = "stupen";
         }
@@ -613,57 +620,63 @@ namespace SmallCalculator
         {
             if (lastAction.Equals(""))
             {
-                summ = double.Parse(label1.Text);
+                summ = double.Parse(textBox1.Text);
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
             if (lastAction.Equals("pluss"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ + sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 summTrigger = 0;
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
             if (lastAction.Equals("minus"))
             {
-                double sbtr = double.Parse(label1.Text);
+                double sbtr = double.Parse(textBox1.Text);
                 summ = summ - sbtr;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 minusTriger = 0;
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
             if (lastAction.Equals("multiply"))
             {
-                double mpl = double.Parse(label1.Text);
+                double mpl = double.Parse(textBox1.Text);
                 summ = summ * mpl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 multyplyTriger = 0;
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
             if (lastAction.Equals("deletion"))
             {
-                double dl = double.Parse(label1.Text);
+                double dl = double.Parse(textBox1.Text);
                 summ = summ / dl;
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 deleteTriger = 0;
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
             if (lastAction.Equals("stupen"))
             {
-                double stp = double.Parse(label1.Text);
+                double stp = double.Parse(textBox1.Text);
                 summ = Math.Pow(summ, stp);
                 Console.WriteLine(summ);
-                label1.Text = summ.ToString();
+                textBox1.Text = summ.ToString();
                 stupenTriger = 0;
+                finalTriger = 1;
                 lastAction = "";
                 return;
             }
@@ -677,16 +690,16 @@ namespace SmallCalculator
         private void clear_Click(object sender, EventArgs e)
         {
             summ = 0;
-            label1.Text = summ.ToString();
+            textBox1.Text = summ.ToString();
             lastAction = "";
             return;
         }
 
         private void negative_Click(object sender, EventArgs e)
         {
-            double number = double.Parse(label1.Text);
+            double number = double.Parse(textBox1.Text);
             number = number * -1;
-            label1.Text = number.ToString();
+            textBox1.Text = number.ToString();
         }
     }
 }
